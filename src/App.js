@@ -23,7 +23,7 @@ function App(props) {
         type:"login"
       })
     }
-  },[]);
+  },[dispatch]);
 
   return (
     <React.Fragment>

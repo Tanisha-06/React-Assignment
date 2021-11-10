@@ -3,7 +3,7 @@ import './Card.css';
 const Card=(props)=>{
 
 return(
-    <div className={`main ${props.position%2==0?"gray":""}`}>
+    <div className={`main ${props.position%2===0?"gray":""}`}>
       <div className="logo"><img src={props.url} alt="logo"/></div>
       <div className="details">
           <div className="row">

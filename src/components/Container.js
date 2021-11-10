@@ -20,7 +20,7 @@ const Container=({setIsLoggedIn})=>{
     
     const fetchedBasket=[];
     for(let b of fetchBasket2.results){
-        const element=fetchBasket1.basket_data.find((e)=> e.id==b.basket_id);
+        const element=fetchBasket1.basket_data.find((e)=> e.id===b.basket_id);
         let assets="";
         b.basket_items.forEach((e)=>{
             assets=assets+e.coin_name+", ";

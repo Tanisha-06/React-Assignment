@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState,useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import Sample_user from './components/sample_user';
+import Container from './components/Container';
+import Login from './components/Login';
 
-function App() {
+//basketToken => token jwt
+
+//user id,password => server
+// server => token => user
+// user => post(token)t => server
+
+
+function App(props) {
+
+  const isLoggedIn = useSelector(s=>s.isLoggedIn);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    const isThereAnyInstanceOf = localStorage.getItem("basketToken");
+    if(isThereAnyInstanceOf){
+      //we can't check the validity here
+      dispatch({
+        type:"login"
+      })
+    }
+  },[]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      {!isLoggedIn && <Login/>}
+      {isLoggedIn && <Container/>}
+      </React.Fragment>
   );
 }
 
